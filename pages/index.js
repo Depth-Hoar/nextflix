@@ -34,7 +34,7 @@ export default function Home({
       </Head>
 
       <div className={styles.main}>
-        <NavBar username="depth@depth.com" />
+        <NavBar />
         <Banner
           title="Clifford the red dog"
           subTitle="a very cute dog"
