@@ -41,6 +41,7 @@ const Login = () => {
 
     if (email) {
       if (email === "thedepthhoar@gmail.com") {
+      // if (email === "nooboody2@yahoo.ca") {
         //  log in a user by their email
         try {
           const didToken = await magic.auth.loginWithMagicLink({
@@ -48,9 +49,22 @@ const Login = () => {
           });
           console.log({ didToken });
           if (didToken) {
-            setIsLoading(false);
+          const response = await fetch("/api/login", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${didToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+
+          const loggedInResponse = await response.json();
+          if (loggedInResponse.done) {
             router.push("/");
+          } else {
+            setIsLoading(false);
+            setUserMsg("Something went wrong logging in");
           }
+        }
         } catch (error) {
           // Handle errors if required!
           console.error("Something went wrong logging in", error);
