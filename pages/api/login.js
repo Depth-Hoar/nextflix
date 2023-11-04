@@ -8,6 +8,7 @@ export default async function login(req, res) {
     try {
       const auth = req.headers.authorization;
       const didToken = auth ? auth.substr(7) : "";
+      // console.log(didToken, "didToken")
 
       const metadata = await magicAdmin.users.getMetadataByToken(didToken);
       console.log({ metadata });
@@ -25,6 +26,7 @@ export default async function login(req, res) {
         },
         process.env.JWT_SECRET
       );
+      // console.log(token,"token");
 
       const isNewUserQuery = await isNewUser(token, metadata.issuer);
       isNewUserQuery && (await createNewUser(token, metadata));
