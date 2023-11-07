@@ -3,10 +3,12 @@ import { verifyToken } from "../lib/utils";
 
 export async function middleware(req, ev) {
   const token = req ? req.cookies.get("token") : null;
+  // console.log(token,"tokenasdfna");
   const userId = await verifyToken(token);
   const { pathname } = req.nextUrl;
 
   if (
+    pathname.startsWith("/_next") ||
     pathname.includes("/api/login") ||
     userId ||
     pathname.includes("/static")

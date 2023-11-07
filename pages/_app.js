@@ -4,7 +4,6 @@ import { magic } from "../lib/magic-client";
 import '@/styles/globals.css'
 import Loading from "../components/loading/loading";
 
-
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
