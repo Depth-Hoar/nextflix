@@ -36,7 +36,7 @@ const MyList = ({ myListVideos }) => {
       <main className={styles.main}>
         <NavBar />
         <div className={styles.sectionWrapper}>
-        <SectionCards
+          <SectionCards
             title="My List"
             videos={myListVideos}
             size="small"

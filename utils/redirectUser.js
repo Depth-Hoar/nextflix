@@ -1,8 +1,7 @@
-import { verifyToken } from "../lib/utils.js";
+import { verifyToken } from "../lib/utils";
 
 export const redirectUser = async (context) => {
   const token = context.req ? context.req.cookies?.token : null;
-  // console.log(token,"tokenasdfna");
   const userId = await verifyToken(token);
 
   return {

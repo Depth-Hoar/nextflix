@@ -20,9 +20,10 @@ const NavBar = () => {
         const didToken = await magic.user.getIdToken();
         if (email) {
           setUsername(email);
+          setDidToken(didToken);
         }
       } catch (error) {
-        console.error("Error retrieving email:", error);
+        console.error("Error retrieving email", error);
       }
     };
     applyUsernameInNav();
@@ -66,14 +67,16 @@ const NavBar = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <Link className={styles.logoLink} href="/">
+          <a>
             <div className={styles.logoWrapper}>
               <Image
                 src="/static/netflix.svg"
                 alt="Netflix logo"
-                width="128"
-                height="34"
+                width="128px"
+                height="34px"
               />
             </div>
+          </a>
         </Link>
 
         <ul className={styles.navItems}>
@@ -92,8 +95,8 @@ const NavBar = () => {
               <Image
                 src={"/static/expand_more.svg"}
                 alt="Expand dropdown"
-                width="24"
-                height="24"
+                width="24px"
+                height="24px"
               />
             </button>
 
